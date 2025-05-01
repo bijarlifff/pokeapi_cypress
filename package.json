@@ -1,0 +1,17 @@
+{
+	"name": "pokeapi",
+	"version": "1.0.0",
+	"description": "BE Testing",
+	"main": "index.js",
+	"author": "abizar",
+	"license": "MIT",
+	"scripts": {
+		"cy:open": "cypress open",
+		"cy:run": "cypress run",
+		"cy:verify": "cypress verify"
+	},
+	"devDependencies": {
+		"cypress": "^14.3.2",
+		"prettier": "^3.5.3"
+	}
+}

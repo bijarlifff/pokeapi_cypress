@@ -1,0 +1,48 @@
+/// <reference types="cypress" />
+
+describe('Data Validity', () => {
+	it('should validate the data from the PokeAPI', () => {
+		cy.request('/pokemon/604').then(response => {
+			expect(response.status).to.eq(200)
+			expect(response.body).to.have.property('id', 604)
+			expect(response.headers).to.have.property(
+				'content-type',
+				'application/json; charset=utf-8'
+			)
+			expect(response.body).have.property('name').and.to.be.a('string')
+			expect(response.body).to.have.property('name', 'eelektross')
+			expect(response.body)
+				.to.have.property('abilities')
+				.and.to.be.an('array')
+			expect(response.body)
+				.to.have.property('base_experience')
+				.and.to.be.a('number')
+			expect(response.body.cries)
+				.to.have.property('legacy')
+				.and.to.be.an('string')
+			expect(response.body).have.property('forms').and.to.be.an('array')
+			expect(response.body)
+				.have.property('game_indices')
+				.and.to.be.an('array')
+			expect(response.body).have.property('height').and.to.be.a('number')
+			expect(response.body)
+				.have.property('held_items')
+				.and.to.be.an('array')
+			expect(response.body)
+				.have.property('is_default')
+				.and.to.be.a('boolean')
+			expect(response.body)
+				.have.property('location_area_encounters')
+				.and.to.be.a('string')
+			expect(response.body).have.property('moves').and.to.be.an('array')
+			expect(response.body)
+				.have.property('species')
+				.and.to.be.an('object')
+			expect(response.body)
+				.have.property('sprites')
+				.and.to.be.an('object')
+			expect(response.body).have.property('stats').and.to.be.an('array')
+			expect(response.body).have.property('types').and.to.be.an('array')
+		})
+	})
+})
